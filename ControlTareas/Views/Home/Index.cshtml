@@ -1,0 +1,44 @@
+﻿@model List<ControlTareas.Models.Tarea>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<div class="card">
+    <div class="card-header">
+        <h5>Lista de Tareas</h5>
+    </div>
+    <div class="card-body">
+        <a class="btn btn-success btn-sm" asp-action="Tarea_Detalle" asp-controller="Home" asp-route-idTarea="0">Crear Nuevo</a>
+        <hr />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Descripcion</th>
+                    <th>Estado</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.Fecha</td>
+                        <td>@item.Descripcion</td>
+                        <td>@item.oEstado.Estado1</td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" asp-action="Tarea_Detalle" asp-controller="Home" asp-route-idTarea="@item.IdTarea">Editar</a>
+                            <a class="btn btn-danger btn-sm" asp-action="Eliminar" asp-controller="Home" asp-route-idTarea="@item.IdTarea">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
